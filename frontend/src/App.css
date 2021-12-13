@@ -1,0 +1,21 @@
+.text-center {
+  text-align: center;
+}
+.text-danger {
+  color: red;
+}
+.btn {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  background-color: #ddd;
+  text-decoration: none;
+  color: #333;
+  cursor:pointer;
+  border-radius: 3px;
+}
+.disabled {
+  color: #757575;
+  border: 1px solid #757575;
+  pointer-events: none;
+}

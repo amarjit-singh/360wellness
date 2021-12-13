@@ -1,0 +1,29 @@
+version: "3.0"
+services:
+  laravel-api:
+    build:
+      dockerfile: apache-php7.2.Dockerfile
+      args:
+       - PHP_VERSION=7.2
+      context: .
+    restart: always
+    volumes:
+     - "./backend:/var/www"
+    ports:
+      - "${API_PORT}:80"
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+     - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+  nodejs-frontend:
+    build:
+      dockerfile: nodejs.Dockerfile
+      context: .
+    restart: always
+    volumes:
+     - "./frontend-build:/root/app/build"
+    ports:
+      - "${REACT_PORT}:80"
+    environment:
+     - REACT_APP_API_URL=http://localhost:${API_PORT}
